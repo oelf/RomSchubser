@@ -50,10 +50,10 @@ public class Container {
         TextView txtContent = new TextView(this.view.getContext());
         txtContent.setText(text);
         if(checked) {
-            txtContent.setTextColor(Color.parseColor("#F00"));
+            txtContent.setTextColor(Color.parseColor("#FF0000"));
         }
         else {
-            txtContent.setTextColor(Color.parseColor("#0F0"));
+            txtContent.setTextColor(Color.parseColor("#00AA00"));
         }
 
         GridLayout grid = new GridLayout(this.view.getContext());
