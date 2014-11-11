@@ -1,5 +1,6 @@
 package de.romschubser;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.Button;
@@ -40,13 +41,20 @@ public class Container {
         this.layoutContent.addView(grid);
     }
 
-    public void addCheckbox(String title, String text) {
+    public void addCheckbox(String title, String text, boolean checked) {
         CheckBox chkTitle = new CheckBox(this.view.getContext());
         chkTitle.setText(title+": ");
         chkTitle.setTypeface(chkTitle.getTypeface(), Typeface.BOLD);
+        chkTitle.setChecked(checked);
 
         TextView txtContent = new TextView(this.view.getContext());
         txtContent.setText(text);
+        if(checked) {
+            txtContent.setTextColor(Color.parseColor("#F00"));
+        }
+        else {
+            txtContent.setTextColor(Color.parseColor("#0F0"));
+        }
 
         GridLayout grid = new GridLayout(this.view.getContext());
         grid.setColumnCount(2);

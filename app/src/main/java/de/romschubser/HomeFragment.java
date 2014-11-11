@@ -55,13 +55,21 @@ public class HomeFragment extends Fragment {
 
         Container container1 = new Container(view, R.id.containerStatus);
         container1.setHeader("Status");
-        container1.addEntry("Rom", this.rom.getRom()+" ("+this.rom.getVersion()+")");
-        container1.addEntry("Kernel", this.kernel.getKernel()+" ("+this.kernel.getVersion()+")");
+        if(this.rom != null) {
+            container1.addEntry("Rom", this.rom.getRom()+" ("+this.rom.getVersion()+")");
+        }
+        if(this.kernel != null) {
+            container1.addEntry("Kernel", this.kernel.getKernel()+" ("+this.kernel.getVersion()+")");
+        }
 
         Container container2 = new Container(view, R.id.containerInstallUpdate);
         container2.setHeader("Installieren/Update");
-        container2.addCheckbox("Rom", this.rom.getAvailableVersion());
-        container2.addCheckbox("Kernel", this.kernel.getAvailableVersion());
+        if(this.rom != null) {
+            container2.addCheckbox("Rom", this.rom.getAvailableVersion(), (!this.rom.isNewest()));
+        }
+        if(this.kernel != null) {
+            container2.addCheckbox("Kernel", this.kernel.getAvailableVersion(), (!this.kernel.isNewest()));
+        }
         container2.addButton("Download and Install");
     }
 
